@@ -17,27 +17,21 @@ import com.apnabank.user.service.UserService;
 @RequestMapping("/api/v1/users")
 public class UserController {
 
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	/*
-	 * public UserController(UserService service) { this.userService = service; }
-	 */
+    /*
+     * public UserController(UserService service) { this.userService = service; }
+     */
 
-	@PostMapping("/create")
-	public ResponseEntity<UserDto> create(@RequestBody CreateUserRequest userRequest) {
-		return ResponseEntity.ok(userService.createUser(userRequest));
-	}
+    @PostMapping("/create")
+    public ResponseEntity<UserDto> create(@RequestBody CreateUserRequest userRequest) {
+        return ResponseEntity.ok(userService.createUser(userRequest));
+    }
 
-	@GetMapping("/{id}")
-	public ResponseEntity<UserDto> get(@PathVariable("id") Long id) {
-		return ResponseEntity.ok(userService.getUserById(id));
-	}
-	
-	@GetMapping("/ping")
-	public String ping() {
-	    System.out.println("PING HIT");
-	    return "USER SERVICE OK";
-	}
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> get(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(userService.getUserById(id));
+    }
 
 }
